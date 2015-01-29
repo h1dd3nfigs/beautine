@@ -1,0 +1,2 @@
+# ignore api key file because it contains secret key
+youtube_api_key.txt

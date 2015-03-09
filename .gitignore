@@ -1,2 +1,6 @@
 # ignore api key file because it contains secret key
 youtube_api_key.txt
+
+# temporarily remove from version control because it contains secret key 
+# and I mistakenly uploaded version containing key to public github repo...ugh :-/
+test-request.php

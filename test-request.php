@@ -10,9 +10,9 @@
 
 stream_context_set_default(['http' => ['ignore_errors' => true]]);
 
-$filename = 'https://www.googleapis.com/youtube/v3/videos?id=ls1IALSUFTc&key=AIzaSyBcH0m2wcf8KptNf4gRx0b672RXnhqkh24&part=snippet';
+$filename = 'https://www.googleapis.com/youtube/v3/videos?id=ls1IALSUFTc&key=&part=snippet';
 
-# $filename = 'https://www.googleapis.com/youtube/v3/videos?id=ls1IALSUFTc&key=AIzaSyBcH0m2wcf8KptNf4gRx0b672RXnhqkh24&part=snippet%2CcontentDetails%2Cstatistics%2Cstatus';
+# $filename = 'https://www.googleapis.com/youtube/v3/videos?id=ls1IALSUFTc&key=&part=snippet%2CcontentDetails%2Cstatistics%2Cstatus';
 echo $filename.'<br><br>';
 $json_response = file_get_contents($filename);
 

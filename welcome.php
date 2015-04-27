@@ -60,23 +60,23 @@
 		</style>
 	</head>
 	<body>
-		<div class="nav">Login
-		</div>
+		<div class="nav">Login </div>
 		<div class="container">
 			<div class="content">
 				<div class="title">Beautine</div>
 				<div class="quote">
 					<h2>Keeping track of all your bloggers' routines just got a little easier</h2>
 					<br />
-				</div>
+				</div><!--.quote-->
 				<div class="how-it-works">
 					<p>STEP 1:	Search for your guru by YouTube channel</p>
 					<p>STEP 2: 	Read a list of your blogger's staples</p>
 					<p>STEP 3: 	Save the list to your feed to remember what to try next</p>
-				</div>	
-				</div>
-			</div>
-		</div>
+				</div>	<!--.how-it-works-->
+			<!--	</div>
+			-->
+			</div><!--.content-->
+		</div><!--.container-->
 
 	</body>
 </html>

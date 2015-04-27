@@ -28,6 +28,8 @@ $buzzwords = array(
 					'Conditioner',	
 					'Cream',	
 					'Creme',
+					'Curl',
+					'Custard',
 					'Detangl',
 					'Edge',	
 					'Gel',	
@@ -48,7 +50,7 @@ $buzzwords = array(
 					'Prepoo',
 					'Protein',	
 					'Pudding',	
-					'Rod',
+					//'Rod',
 					'Reconstructor',
 					'Relaxer',
 					'Rinse',	
@@ -59,12 +61,14 @@ $buzzwords = array(
 					'Slick',
 					'Silk',
 					'Smooth',
-					'Soap',	
+					'Soap',
+					'Solution',	
 					'Spray',	
 					'Steam',
-					'Styl',
+					//'Styl',
 					'Thermal',
 					'Treatment',
+					'Wash',
 );
 
 
@@ -87,9 +91,10 @@ function get_vid_txt($vid_url)
 function get_products_from_vid_txt($vid_txt, $buzzwords)
 {
 	$products = array();
-
-	$vid_txt_by_line = explode('<br />', $vid_txt);
-	
+//	$vid_txt_after_products = stristr($vid_txt, "products");
+//	$vid_txt_by_line = explode('<br />', $vid_txt);
+	$vid_txt_by_line = explode("\n", $vid_txt);
+	//	print_r($vid_txt_by_line);
 	foreach ($vid_txt_by_line as $line) 
 	{
 		foreach ($buzzwords as $buzzword) {
@@ -104,12 +109,26 @@ function get_products_from_vid_txt($vid_txt, $buzzwords)
 	return $products ;
 }
 
-$vid_url = 'https://www.youtube.com/watch?v=eucv7cvjIqM';
-$vid_txt = get_vid_txt($vid_url);
-$products = get_products_from_vid_txt($vid_txt, $buzzwords);
-var_dump($products)
+//if(isset($_POST['vid_url']) && !empty($_POST['vid_url'])) {
+//	$vid_url = $_POST['vid_url'];
+//	$vid_txt = get_vid_txt($vid_url);
+
+//	$vid_txt =  "THUMBS ME UP IF YOU WOULD LIKE TO SEE A DEMO OF THIS PRODUCT! :) *I created this video to share my experience and how well this product worked for my hair! If you have tried this product or any Lush products comment below and tell me about them.*\n\nLush Fresh Handmade Cosmetics - http://www.lush.com\nLust - Zeste Medium to Strong Hair Gelly\n\nWant to see what I use to achieve moisturized hair? Watch here -bit.ly/UdRgrX\n\nWatch how I moisturize and seal - http://bit.ly/1nQXfjc\n\nWatch how my bun tutorial - http://bit.ly/1kDV9A5\n\nFoundation Routine - http://bit.ly/1p8KOfZ\n\nFollow Me Around\nInstagram - ulovemegz\nTwitter - http://www.twitter.com/ulovemegz\nFacebook - http://www.facebook.com/ulovemegz\nBlogger - http://www.ulovemegz.com\nBusiness Contact - ulovemegzbusiness@gmail.com";
+//	$products = get_products_from_vid_txt($vid_txt, $buzzwords);
+//	var_dump($products);
+
+//}
 
 ?>
+<!--
+<form action="#" method="POST">
+	<br />
+	<input type="text" name="vid_url" placeholder="Paste video URL here" width=200>
+	<br /><br />
+	<input type="submit" value="Retrive Product List">
+
+</form>
+-->
 <!--
 <html>
 	<head>

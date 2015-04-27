@@ -1,2 +1,5 @@
 *.txt
 test-request.php
+yt-config.php
+
+beautine-laravel/app/RFLib/YTConfig.php

@@ -1,5 +1,6 @@
 *.txt
 test-request.php
 yt-config.php
-
+yt-api-search-test.php
+yt-api-channels-test.php
 beautine-laravel/app/RFLib/YTConfig.php

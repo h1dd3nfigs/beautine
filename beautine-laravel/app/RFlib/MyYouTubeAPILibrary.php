@@ -52,13 +52,15 @@ class MyYouTubeAPILibrary{
 			}
 
 		} catch (Google_ServiceException $e) {
+			//$htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>',
 			
-			$htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>',
+			echo sprintf('<p>A service error occurred: <code>%s</code></p>',
 		  	htmlspecialchars($e->getMessage()));
 		
 		} catch (Google_Exception $e) {
+			//$htmlBody .= sprintf('<p>A client error occurred: <code>%s</code></p>',
 			
-			$htmlBody .= sprintf('<p>A client error occurred: <code>%s</code></p>',
+			echo sprintf('<p>A client error occurred: <code>%s</code></p>',
 			htmlspecialchars($e->getMessage()));
 		}
 	}
@@ -84,7 +86,6 @@ class MyYouTubeAPILibrary{
 		        'pageToken' => $nextPageToken
 	        ));
 
-	        $all_titles = array();
 	        $uploaded_vids = array();
 
 	        foreach ($playlistItemsResponse['items'] as $playlistItem) {
@@ -95,13 +96,10 @@ class MyYouTubeAPILibrary{
 		        $vid_date =  date('M j, Y', strtotime($playlistItem['snippet']['publishedAt']));
 		      	$vid_txt = $playlistItem['snippet']['description'];
 
-	        	$all_titles[]= $vid_title ;
-
-		        
 		      	// grab the products mentionned in the description under each vid (playlistItem)
 		      	$products = $this->grabProductsFromVid($vid_txt);
 		      	
-				$uploaded_vids[] = array(					  
+				$uploaded_vids[$vid_title] = array(					  
 		        						'vid_number'   => $vid_number,
 		        						'vid_title'    => $vid_title, 
 		        						'vid_id'	   => $vid_id,
@@ -113,14 +111,12 @@ class MyYouTubeAPILibrary{
 
 	      	}
 
+
 	      	// apply filter to remove all videos with irrelevant titles
-	      	 $filtered_titles = $this->filterUploadsByTitle($all_titles);
-	      	 echo 'Filtered Titles: <br />';
-	      	 var_dump($filtered_titles);
-	      	 echo 'All Titles: <br />';
-	      	 var_dump($all_titles);
-	      	 die;
-	      	 //return var_dump($uploaded_vids) ;
+	      	 $filtered_titles = $this->filterUploadsByTitle(array_keys($uploaded_vids));
+	      //	 echo 'Filtered Titles: <br />';
+	      	 $filtered_uploaded_vids = array_intersect_key($uploaded_vids, array_fill_keys($filtered_titles,''));
+	      	 return $filtered_uploaded_vids ;
 	      	/*
   	      $nextPageToken = $playlistItemsResponse['nextPageToken'];
 	      $pages = $videoCount/50 - 1;

@@ -42,12 +42,12 @@ class BloggersController extends Controller {
 	{
 
 		
-		if(null != $this->request->input('blogger_username2'))
+		if($this->request->input('blogger_username2') != null )
 		{
 			$uploads_list_id = $this->request->input('uploads_list_id');
-			$uploaded_vids = $this->myYoutube->getChannelUploads($uploads_list_id);
+			$filtered_uploaded_vids = $this->myYoutube->getChannelUploads($uploads_list_id);
 
-			return view('bloggers.show')->with('uploaded_vids',$uploaded_vids);
+			return view('bloggers.show')->with('filtered_uploaded_vids',$filtered_uploaded_vids);
 		}
 	
 		$blogger_username = $this->request->input('blogger_username');
